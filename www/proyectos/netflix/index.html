@@ -3,24 +3,24 @@
 <head>
     <meta charset="utf8" />
     <title>Netflux</title>
-    <link rel="stylesheet" type="text/css" href="css/css.css">
-    <script src="js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
 </head>
 <body>
-	<header>
-		<h3>Videos Bajo Demanda</h3>
-	</header>
-	<main>
+	<div id="login">
 		<form action="php/bridge_login.php" method="post">
-			<label for="user">Usuario</label>
-			<input type="text" id="user" name="user">
-			<label for="psw">Contraseña</label>
-			<input type="password" id="psw" name="psw">
-			<button type="submit">Enviar datos</button>
+			
+			<section id="title">
+				<h2>INICIO DE SESIÓN</h2>
+			</section>
+			<section id="campos">
+				<input type="text" id="user" name="user" placeholder="USUARIO">
+				<input type="password" id="psw" name="psw" placeholder="CONTRASEÑA">
+			</section>
+			<section>
+				<button type="submit">Enviar datos</button>
+			</section>
 		</form>
-	</main>
-	<footer>
-
-	</footer>
+	</div>
 </body>
 </html>
