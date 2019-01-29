@@ -1,8 +1,8 @@
 <?php
 
 function connectBD(){
-    require_once("netflixbd.php");
-    $connect = new mysqli("IP","USER","PSW","BD");
+    require_once "netflixbd.php";
+    $connect = new mysqli(IP,USER,PSW,BD);
     if($connect->connect_error){
         die('Error de Conexión ('.$connect->connect_errno.')'.$connect->connect_error);
     }
@@ -11,7 +11,33 @@ function connectBD(){
 
 function validate($user, $psw){
     $connect = connectBD();
-    $validation = true;
-    return $validation;
+    $query = $connect->prepare("select clave from usuarios where dni=?");
+    if($query){
+        $query->bind_param("s",$userQuery);
+        $userQuery = $user;
+
+        $query->execute();
+        $query->bind_result($pswResult);
+        $query->fetch();
+        $query->close();
+        $connect->close();
+        
+        if(is_null($pswResult)){
+            return "Usuario no encontrado";
+        }else if(!password_verify($psw,$pswResult)){
+            return "Contraseña incorrecta";
+        }else if(password_verify($psw,$pswResult)){
+            return true;
+        }
+    }
+    $connect->close();
+}
+
+
+function createSession($user){
+    session_name("SESSION");
+    session_cache_limiter("nocache");
+    session_start($user);
+    $_SESSION['user']=$user;
 }
 
