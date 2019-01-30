@@ -6,6 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 750px;
+    flex-direction: column;
 }
 
 #login{
@@ -21,6 +22,13 @@ body{
     flex-direction: column;
     align-content: center;
     
+}
+
+#alert{
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
 }
 
 #title{

@@ -6,9 +6,14 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="js/login.js"></script>
 </head>
+
 <body>
+	<div id="alert">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  		<span id="error">{$message}</span>
+	</div>
 	<div id="login">
-		<form action="php/bridge_login.php" method="post">
+		<form action="bridge_login.php" method="post">
 			<section id="title">
 				<h2>INICIO DE SESIÓN</h2>
 			</section>
@@ -23,3 +28,4 @@
 	</div>
 </body>
 </html>
+
