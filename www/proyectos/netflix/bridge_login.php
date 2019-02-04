@@ -14,8 +14,12 @@ $psw = trim(strip_tags($_POST['psw']));
 $validation = validate($user, $psw);
 
 if($validation==1){
-    createSession($user);
-    $screen->showScreen('main.tpl');
+    
+    createSession($user/* , $profiles */);
+    $videos = getVideosMain();
+    /* print_r($videos); */
+    /* echo var_dump($videos); */
+    $screen->showMain('main.tpl', $videos);
 }else{
     $screen->showScreenMessage('index.tpl', $validation);
 }

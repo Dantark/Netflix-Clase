@@ -19,4 +19,8 @@ class Screen extends Smarty{
         $this->assign("message", $messageValue);
         $this->display($screen);
     }
+    public function showMain($screen, $videos){
+        $this->assign("videos", $videos);
+        $this->display($screen);
+    }
 }
