@@ -40,13 +40,30 @@ function createSession($user){
     $_SESSION['user']=$user;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+function deleteSession(){
+    session_name("SESSION");
+=======
 function deleteSession($screen){
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
+=======
+function deleteSession($screen){
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
     session_cache_limiter('nocache');
     session_start(); 
 
     session_destroy();
     unset($_SESSION);
+<<<<<<< HEAD
+<<<<<<< HEAD
+    header("Location: index.php");
+=======
     $screen->showScreenMessage('index.tpl',"");
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
+=======
+    $screen->showScreenMessage('index.tpl',"");
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
     exit;
 }
 
@@ -71,6 +88,37 @@ function getVideosMain(){
 
     $profiles = getProfiles($user);
     $videos = array();
+<<<<<<< HEAD
+<<<<<<< HEAD
+    $found = false;
+    foreach ($profiles as $profile) {
+        $connect = connectBD();
+        $query = $connect->prepare("select videos.codigo, videos.cartel, tematica.descripcion from videos, tematica, asociado 
+        where videos.codigo = asociado.codigo_video and asociado.codigo_tematica = tematica.codigo and codigo_perfil=? order by videos.titulo");
+        $query->bind_param("s",$profileQuery);
+        $profileQuery = $profile;
+        $query->execute();
+        $query->bind_result($codResult, $posterResult, $tematicResult);
+        
+        while($query->fetch()){
+            $found = false;
+            foreach($videos as &$video){
+                if($video['cod']==$codResult){
+                    $video['tematic']=$video['tematic'].'/'.$tematicResult;
+                    $found = true;
+                }
+            }
+            if(!$found){
+                array_push($videos, array('cod'=>$codResult, 'poster'=>$posterResult, 'tematic'=>$tematicResult));
+            }  
+        }
+        
+       
+        
+
+=======
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
 
     foreach ($profiles as $profile) {
         $connect = connectBD();
@@ -82,6 +130,10 @@ function getVideosMain(){
         while($query->fetch()){
             array_push($videos, new Video($codResult,$posterResult));
         }
+<<<<<<< HEAD
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
         $query->close();
         $connect->close();
     }
@@ -89,6 +141,26 @@ function getVideosMain(){
 }
 function getVideo($cod){
     $connect = connectBD();
+<<<<<<< HEAD
+<<<<<<< HEAD
+    $query = $connect->prepare("select titulo, cartel, descargable, sinopsis, video from videos where codigo=?");
+    $query->bind_param("s",$codQuery);
+    $codQuery = $cod;
+    $query->execute();
+    $query->bind_result($titleResult, $posterResult, $downloadableResult, $synopsisResult, $videoResult);
+    $video = array();
+    $query->fetch();
+    
+    
+    $video["title"] = $titleResult;
+    $video["poster"] = $posterResult;
+    $video["downld"] = $downloadableResult;
+    $video["synopsis"] = $synopsisResult;
+    $video["video"] = $videoResult;
+
+=======
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
     $query = $connect->prepare("select * from videos where codigo=?");
     $query->bind_param("s",$codQuery);
     $codQuery = $cod;
@@ -96,7 +168,27 @@ function getVideo($cod){
     $query->bind_result($codResult, $titleResult, $posterResult, $downloadableResult, $codProfileResult, $synopsisResult, $videoResult);
     $query->fetch();
     $video = new Video($codResult, $titleResult, $posterResult, $downloadableResult, $codProfileResult, $synopsisResult, $videoResult);
+<<<<<<< HEAD
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
     $query->close();
     $connect->close();
     return $video;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* select videos.codigo, videos.cartel, tematica.descripcion
+from videos, tematica, asociado
+where 
+videos.codigo = asociado.codigo_video and
+asociado.codigo_tematica = tematica.codigo and 
+codigo_perfil="P1" 
+order by titulo; */
+
+/* select codigo, cartel, from videos where codigo_perfil=? order by titulo */
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
+=======
+>>>>>>> 5ebd1770b0ae283d9e8c5a40ab4001db77b110d7
