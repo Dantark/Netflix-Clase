@@ -18,11 +18,3 @@ if(!isset($_SESSION['user'])){
     $videos = getVideosMain();
     $screen->showScreenParameter('main.tpl', $videos);
 }
-
-
-
-
-
-
-
-

@@ -15,7 +15,6 @@ $validation = validate($user, $psw);
 
 if($validation==1){
     createSession($user);
-    /* echo var_dump($videos); */
     header("Location: main.php");
 }else{
     $screen->showScreenParameter('index.tpl', $validation);
