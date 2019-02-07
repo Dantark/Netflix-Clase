@@ -118,7 +118,7 @@ function getVideo($cod){
     $video["downld"] = $downloadableResult;
     $video["synopsis"] = $synopsisResult;
 
-    $video["video"] = $videoResult = generateURLVideo();
+    $video["video"] = $videoResult;
     $query->close();
     $connect->close();
     return $video;

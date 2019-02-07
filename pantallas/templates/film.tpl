@@ -5,7 +5,6 @@
     <meta charset="utf8" />
     <title>Netflux</title>
     <link rel="stylesheet" type="text/css" href="css/film.css">
-    <script src="js/login.js"></script>
 </head>
 
 <body>
@@ -24,7 +23,7 @@
                 <p>{$parameter.synopsis}</p>
             </div>
             <div>
-                <button><a href="player.php">Ver Online</a></button>
+               <a href="player.php?video={$parameter.video}">Ver Online</a>
                 <button>Descargar</button>
             </div>
         </section>
